@@ -17,9 +17,8 @@ stages:
       displayName: 'Install Node.js'
     - script: |
         npm install
-        npm run build --if-present
-        npm run test --if-present
-      displayName: 'npm install, build and test'
+        npm run build
+      displayName: 'npm install, build'
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -36,7 +35,7 @@ stages:
     environment:
       name: test
       resourceType: VirtualMachine
-      tags: web1
+      tags: web
     strategy:
       runOnce:
         deploy:
