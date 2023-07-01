@@ -22,6 +22,12 @@ app.get("/json", (req, res) => {
   //     res.sendFile('build/index.html', { root: __dirname });
 });
 
+app.get("/api/data", (req, res) => {
+  console.log(req);
+  res.json({ msg: "hello" });
+  //     res.sendFile('build/index.html', { root: __dirname });
+});
+
 app.all("*", (req, res, next) => {
   console.log("page not found");
 });
