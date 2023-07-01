@@ -16,5 +16,4 @@ npm install
 # Build the project
 npm run build
 
-
 sudo cp -R build/. /var/www/html
