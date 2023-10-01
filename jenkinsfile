@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from a public GitHub repository
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/yourusername/your-repo.git']]])
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                // Build Docker image
+                script {
+                    def customImageTag = "your-image-tag:${env.BUILD_NUMBER}"
+                    docker.build(customImageTag, './server')
+                }
+            }
+        }
+    }
+}
